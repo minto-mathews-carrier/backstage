@@ -107,6 +107,7 @@ export const examples: TemplateExample[] = [
             kind: 'require_approvals_to_merge',
             branchMatchKind: 'glob',
             pattern: 'test-feature/*',
+            value: '1',
           },
         },
       ],

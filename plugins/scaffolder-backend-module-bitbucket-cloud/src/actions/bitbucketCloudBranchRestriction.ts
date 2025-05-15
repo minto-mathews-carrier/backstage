@@ -30,7 +30,7 @@ const createBitbucketCloudBranchRestriction = async (opts: {
   branchMatchKind?: string;
   branchType?: string;
   pattern?: string;
-  value?: number;
+  value?: string;
   users?: { uuid: string; type: string }[];
   groups?: { slug: string; type: string }[];
   authorization: {
@@ -60,7 +60,7 @@ const createBitbucketCloudBranchRestriction = async (opts: {
       branch_match_kind: branchMatchKind,
       kind: kind,
       type: 'branchrestriction',
-      value: kind === 'push' ? null : value,
+      value: kind === 'push' || value === 'null' ? null : Number(value),
       pattern: branchMatchKind === 'glob' ? pattern : undefined,
       branch_type:
         branchMatchKind === 'branching_model' ? branchType : undefined,
@@ -84,7 +84,7 @@ export function createBitbucketCloudBranchRestrictionAction(options: {
     branchMatchKind?: string;
     branchType?: string;
     pattern?: string;
-    value?: number;
+    value?: string;
     users?: { uuid: string }[];
     groups?: { slug: string }[];
     token?: string;
@@ -130,7 +130,7 @@ export function createBitbucketCloudBranchRestrictionAction(options: {
         branchMatchKind = 'branching_model',
         branchType = 'development',
         pattern = '',
-        value = 1,
+        value = 'null',
         users = [],
         groups = [],
         token = '',
