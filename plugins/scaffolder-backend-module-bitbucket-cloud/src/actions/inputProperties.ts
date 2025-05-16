@@ -212,7 +212,8 @@ const restriction = {
     title: 'value',
     description:
       'The value of the restriction. This field is required when kind is one of require_approvals_to_merge / require_default_reviewer_approvals_to_merge / require_passing_builds_to_merge / require_commits_behind.',
-    type: 'number',
+    type: 'string',
+    nullable: true,
   },
   users: {
     title: 'users',
